@@ -23,7 +23,7 @@ HashLib4Python is a cython wrapper around [HashLib4CPP](https://www.github.com/r
     PBKDF2_HMAC only for Crypto hashes.
 
 
-#####Installing the Library
+#####Installing the Library:
 	Copy "HashFactory.pyd" to your python library package path. Very well tested with 
 	Python 2.7, but should also work well with Python3.
 
