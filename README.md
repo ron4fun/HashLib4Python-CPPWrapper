@@ -22,7 +22,11 @@ HashLib4Python is a cython wrapper around [HashLib4CPP](https://www.github.com/r
     
     PBKDF2_HMAC only for Crypto hashes.
 
-    
+
+#####Installing the Library
+	Copy "HashFactory.pyd" to your python library package path. Very well tested with 
+	Python 2.7, but should also work well with Python3.
+
 #####Non-Cryptographic 32-bits Hash Usage:
 	The function call for the hashes without keys accepts 3 parameters
 	i.e (a_string, a_PyMODE, an_encoding='UTF-8'): AP, BKDR, Bernstein, Bernstein1, DEK, 
