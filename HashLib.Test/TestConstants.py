@@ -1,4 +1,4 @@
-import HashFactory
+import HashLib4Python
 
 EmptyData = ""
 DefaultData = "HashLib4Pascal"

@@ -10,34 +10,42 @@ class MurmurHash3_x64_128TestCase(unittest.TestCase):
         self.ExpectedHashOfEmptyDataWithOneAsKey = "4610ABE56EFF5CB551622DAA78F83583"
         self.ExpectedHashOfDefaultDataWithMaxUInt32AsKey = "ADFD14988FB1F8582A1B67C1BBACC218"
 
-        self.murmurhash3_x64_128 = HashFactory.PyHash128.CreateMurmurHash3_x64_128
+        self.murmurhash3_x64_128 = HashLib4Python.PyHash128.CreateMurmurHash3_x64_128()
        
     def test_TestRandomString(self):
-        ActualString = self.murmurhash3_x64_128(RandomStringTobacco, 0)
+        ActualString = self.murmurhash3_x64_128.ComputeString(RandomStringTobacco).ToString()
         self.assertTrue(self.ExpectedHashOfRandomString == ActualString)
 
     def test_TestDefaultData(self):
-        ActualString = self.murmurhash3_x64_128(DefaultData, 0)
+        ActualString = self.murmurhash3_x64_128.ComputeString(DefaultData).ToString()
         self.assertTrue(self.ExpectedHashOfDefaultData == ActualString)
 
     def test_TestEmptyStream(self):
-        ActualString = self.murmurhash3_x64_128("EmptyFile.txt", 1)
+        ActualString = self.murmurhash3_x64_128.ComputeFile("EmptyFile.txt").ToString()
         self.assertTrue(self.ExpectedHashOfEmptyData == ActualString)
 
     def test_TestEmptyString(self):
-        ActualString = self.murmurhash3_x64_128(EmptyData, 0)
+        ActualString = self.murmurhash3_x64_128.ComputeString(EmptyData).ToString()
         self.assertTrue(self.ExpectedHashOfEmptyData == ActualString)
 
     def test_TestZerotoFour(self):
-        ActualString = self.murmurhash3_x64_128(ZerotoFour, 0)
+        ActualString = self.murmurhash3_x64_128.ComputeString(ZerotoFour).ToString()
         self.assertTrue(self.ExpectedHashOfZerotoFour == ActualString)
 
     def test_TestWithDifferentKeyMaxUInt32DefaultData(self):
-        ActualString = self.murmurhash3_x64_128(DefaultData, 0, MaxUInt32)
+        Hash = HashLib4Python.PyHash128.CreateMurmurHash3_x64_128()
+        Hash.SetKey(HashLib4Python.PyConverters.ReadUInt32AsBytesLE(
+                    MaxUInt32)
+                    )
+        ActualString = Hash.ComputeString(DefaultData).ToString()
         self.assertTrue(self.ExpectedHashOfDefaultDataWithMaxUInt32AsKey == ActualString)
 
     def test_TestWithDifferentKeyOneEmptyString(self):
-        ActualString = self.murmurhash3_x64_128(EmptyData, 0, 1)
+        Hash = HashLib4Python.PyHash128.CreateMurmurHash3_x64_128()
+        Hash.SetKey(HashLib4Python.PyConverters.ReadUInt32AsBytesLE(
+                    1)
+                    )
+        ActualString = Hash.ComputeString(EmptyData).ToString()
         self.assertTrue(self.ExpectedHashOfEmptyDataWithOneAsKey == ActualString)
 
 
@@ -50,34 +58,42 @@ class MurmurHash3_x86_128TestCase(unittest.TestCase):
         self.ExpectedHashOfEmptyDataWithOneAsKey = "88C4ADEC54D201B954D201B954D201B9"
         self.ExpectedHashOfDefaultDataWithMaxUInt32AsKey = "55315FA9E8129C7390C080B8FDB1C972"
 
-        self.murmurhash3_x86_128 = HashFactory.PyHash128.CreateMurmurHash3_x86_128
+        self.murmurhash3_x86_128 = HashLib4Python.PyHash128.CreateMurmurHash3_x86_128()
        
     def test_TestRandomString(self):
-        ActualString = self.murmurhash3_x86_128(RandomStringTobacco, 0)
+        ActualString = self.murmurhash3_x86_128.ComputeString(RandomStringTobacco).ToString()
         self.assertTrue(self.ExpectedHashOfRandomString == ActualString)
 
     def test_TestDefaultData(self):
-        ActualString = self.murmurhash3_x86_128(DefaultData, 0)
+        ActualString = self.murmurhash3_x86_128.ComputeString(DefaultData).ToString()
         self.assertTrue(self.ExpectedHashOfDefaultData == ActualString)
 
     def test_TestEmptyStream(self):
-        ActualString = self.murmurhash3_x86_128("EmptyFile.txt", 1)
+        ActualString = self.murmurhash3_x86_128.ComputeFile("EmptyFile.txt").ToString()
         self.assertTrue(self.ExpectedHashOfEmptyData == ActualString)
 
     def test_TestEmptyString(self):
-        ActualString = self.murmurhash3_x86_128(EmptyData, 0)
+        ActualString = self.murmurhash3_x86_128.ComputeString(EmptyData).ToString()
         self.assertTrue(self.ExpectedHashOfEmptyData == ActualString)
 
     def test_TestZerotoFour(self):
-        ActualString = self.murmurhash3_x86_128(ZerotoFour, 0)
+        ActualString = self.murmurhash3_x86_128.ComputeString(ZerotoFour).ToString()
         self.assertTrue(self.ExpectedHashOfZerotoFour == ActualString)
 
     def test_TestWithDifferentKeyMaxUInt32DefaultData(self):
-        ActualString = self.murmurhash3_x86_128(DefaultData, 0, MaxUInt32)
+        Hash = HashLib4Python.PyHash128.CreateMurmurHash3_x86_128()
+        Hash.SetKey(HashLib4Python.PyConverters.ReadUInt32AsBytesLE(
+                    MaxUInt32)
+                    )
+        ActualString = Hash.ComputeString(DefaultData).ToString()
         self.assertTrue(self.ExpectedHashOfDefaultDataWithMaxUInt32AsKey == ActualString)
 
     def test_TestWithDifferentKeyOneEmptyString(self):
-        ActualString = self.murmurhash3_x86_128(EmptyData, 0, 1)
+        Hash = HashLib4Python.PyHash128.CreateMurmurHash3_x86_128()
+        Hash.SetKey(HashLib4Python.PyConverters.ReadUInt32AsBytesLE(
+                    1)
+                    )
+        ActualString = Hash.ComputeString(EmptyData).ToString()
         self.assertTrue(self.ExpectedHashOfEmptyDataWithOneAsKey == ActualString)
 
   
