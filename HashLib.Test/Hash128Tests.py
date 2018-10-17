@@ -1,7 +1,6 @@
 from TestConstants import *
-import unittest
 
-class MurmurHash3_x64_128TestCase(unittest.TestCase):
+class MurmurHash3_x64_128TestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00000000000000000000000000000000"
         self.ExpectedHashOfDefaultData = "705BD3C954B94BE056F06B68662E6364"
@@ -48,8 +47,28 @@ class MurmurHash3_x64_128TestCase(unittest.TestCase):
         ActualString = Hash.ComputeString(EmptyData).ToString()
         self.assertTrue(self.ExpectedHashOfEmptyDataWithOneAsKey == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash128.CreateMurmurHash3_x64_128()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash128.CreateMurmurHash3_x64_128()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
 
-class MurmurHash3_x86_128TestCase(unittest.TestCase):
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash128.CreateMurmurHash3_x64_128()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash128.CreateMurmurHash3_x64_128()
+
+        self.HashCloneIsUnique(Hash)
+
+
+class MurmurHash3_x86_128TestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00000000000000000000000000000000"
         self.ExpectedHashOfDefaultData = "B35E1058738E067BF637B17075F14B8B"
@@ -96,6 +115,26 @@ class MurmurHash3_x86_128TestCase(unittest.TestCase):
         ActualString = Hash.ComputeString(EmptyData).ToString()
         self.assertTrue(self.ExpectedHashOfEmptyDataWithOneAsKey == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash128.CreateMurmurHash3_x86_128()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash128.CreateMurmurHash3_x86_128()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
+
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash128.CreateMurmurHash3_x86_128()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash128.CreateMurmurHash3_x86_128()
+
+        self.HashCloneIsUnique(Hash)
+        
   
 if __name__ ==  '__main__':
     unittest.main()

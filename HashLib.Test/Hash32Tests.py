@@ -1,7 +1,6 @@
 from TestConstants import *
-import unittest
 
-class APTestCase(unittest.TestCase):
+class APTestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "AAAAAAAA"
         self.ExpectedHashOfDefaultData = "7F14EFED"
@@ -29,9 +28,29 @@ class APTestCase(unittest.TestCase):
     def test_TestOnetoNine(self):
         ActualString = self.ap.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
-  
 
-class BernsteinTestCase(unittest.TestCase):
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateAP()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateAP()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
+
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateAP()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateAP()
+
+        self.HashCloneIsUnique(Hash)
+
+
+class BernsteinTestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00001505"
         self.ExpectedHashOfDefaultData = "C4635F48"
@@ -59,9 +78,28 @@ class BernsteinTestCase(unittest.TestCase):
     def test_TestOnetoNine(self):
         ActualString = self.bernstein.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
-  
 
-class Bernstein1TestCase(unittest.TestCase):
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateBernstein()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateBernstein()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
+
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateBernstein()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateBernstein()
+
+        self.HashCloneIsUnique(Hash)
+
+class Bernstein1TestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00001505"
         self.ExpectedHashOfDefaultData = "2D122E48"
@@ -90,8 +128,27 @@ class Bernstein1TestCase(unittest.TestCase):
         ActualString = self.bernstein1.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateBernstein1()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateBernstein1()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
 
-class BKDRTestCase(unittest.TestCase):
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateBernstein1()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateBernstein1()
+
+        self.HashCloneIsUnique(Hash)
+
+class BKDRTestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00000000"
         self.ExpectedHashOfDefaultData = "29E11B15"
@@ -119,9 +176,28 @@ class BKDRTestCase(unittest.TestCase):
     def test_TestOnetoNine(self):
         ActualString = self.bkdr.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
- 
 
-class DEKTestCase(unittest.TestCase):
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateBKDR()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateBKDR()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
+
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateBKDR()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateBKDR()
+
+        self.HashCloneIsUnique(Hash)
+
+class DEKTestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00000000"
         self.ExpectedHashOfDefaultData = "8E01E947"
@@ -149,9 +225,29 @@ class DEKTestCase(unittest.TestCase):
     def test_TestOnetoNine(self):
         ActualString = self.dek.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
- 
 
-class DJBTestCase(unittest.TestCase):
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateDEK()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateDEK()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
+
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateDEK()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateDEK()
+
+        self.HashCloneIsUnique(Hash)
+        
+
+class DJBTestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00001505"
         self.ExpectedHashOfDefaultData = "C4635F48"
@@ -180,8 +276,28 @@ class DJBTestCase(unittest.TestCase):
         ActualString = self.djb.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateDJB()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateDJB()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
 
-class ELFTestCase(unittest.TestCase):
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateDJB()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateDJB()
+
+        self.HashCloneIsUnique(Hash)
+
+
+class ELFTestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00000000"
         self.ExpectedHashOfDefaultData = "01F5B2CC"
@@ -210,8 +326,28 @@ class ELFTestCase(unittest.TestCase):
         ActualString = self.elf.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateELF()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateELF()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
 
-class FNVTestCase(unittest.TestCase):
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateELF()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateELF()
+
+        self.HashCloneIsUnique(Hash)
+        
+
+class FNVTestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00000000"
         self.ExpectedHashOfDefaultData = "BE611EA3"
@@ -240,8 +376,28 @@ class FNVTestCase(unittest.TestCase):
         ActualString = self.fnv.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateFNV()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateFNV()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
 
-class FNV1aTestCase(unittest.TestCase):
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateFNV()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateFNV()
+
+        self.HashCloneIsUnique(Hash)
+        
+
+class FNV1aTestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "811C9DC5"
         self.ExpectedHashOfDefaultData = "1892F1F8"
@@ -269,9 +425,29 @@ class FNV1aTestCase(unittest.TestCase):
     def test_TestOnetoNine(self):
         ActualString = self.fnv1a.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
+
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateFNV1a()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateFNV1a()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
+
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateFNV1a()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateFNV1a()
+
+        self.HashCloneIsUnique(Hash)
         
 
-class Jenkins3TestCase(unittest.TestCase):
+class Jenkins3TestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00000000"
         self.ExpectedHashOfDefaultData = "F0F69CEF"
@@ -300,8 +476,28 @@ class Jenkins3TestCase(unittest.TestCase):
         ActualString = self.jenkins3.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateJenkins3()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateJenkins3()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
 
-class JSTestCase(unittest.TestCase):
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateJenkins3()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateJenkins3()
+
+        self.HashCloneIsUnique(Hash)
+        
+        
+class JSTestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "4E67C6A7"
         self.ExpectedHashOfDefaultData = "683AFCFE"
@@ -330,8 +526,28 @@ class JSTestCase(unittest.TestCase):
         ActualString = self.js.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateJS()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateJS()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
 
-class Murmur2TestCase(unittest.TestCase):
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateJS()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateJS()
+
+        self.HashCloneIsUnique(Hash)
+
+        
+class Murmur2TestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00000000"
         self.ExpectedHashOfDefaultData = "30512DE6"
@@ -369,8 +585,28 @@ class Murmur2TestCase(unittest.TestCase):
         ActualString = Hash.ComputeString(DefaultData).ToString()
         self.assertTrue(self.ExpectedHashOfDefaultDataWithMaxUInt32AsKey == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateMurmur2()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateMurmur2()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
 
-class MurmurHash3_x86_32TestCase(unittest.TestCase):
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateMurmur2()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateMurmur2()
+
+        self.HashCloneIsUnique(Hash)
+        
+
+class MurmurHash3_x86_32TestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00000000"
         self.ExpectedHashOfDefaultData = "3D97B9EB"
@@ -417,8 +653,28 @@ class MurmurHash3_x86_32TestCase(unittest.TestCase):
         ActualString = Hash.ComputeString(DefaultData).ToString()
         self.assertTrue(self.ExpectedHashOfDefaultDataWithMaxUInt32AsKey == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateMurmurHash3_x86_32()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateMurmurHash3_x86_32()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
 
-class OneAtTimeTestCase(unittest.TestCase):
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateMurmurHash3_x86_32()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateMurmurHash3_x86_32()
+
+        self.HashCloneIsUnique(Hash)
+        
+
+class OneAtTimeTestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00000000"
         self.ExpectedHashOfDefaultData = "4E379A4F"
@@ -447,8 +703,28 @@ class OneAtTimeTestCase(unittest.TestCase):
         ActualString = self.oneattime.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateOneAtTime()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateOneAtTime()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
 
-class PJWTestCase(unittest.TestCase):
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateOneAtTime()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateOneAtTime()
+
+        self.HashCloneIsUnique(Hash)
+
+        
+class PJWTestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00000000"
         self.ExpectedHashOfDefaultData = "01F5B2CC"
@@ -476,9 +752,29 @@ class PJWTestCase(unittest.TestCase):
     def test_TestOnetoNine(self):
         ActualString = self.pjw.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
-  
 
-class RotatingTestCase(unittest.TestCase):
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreatePJW()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreatePJW()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
+
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreatePJW()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreatePJW()
+
+        self.HashCloneIsUnique(Hash)
+        
+
+class RotatingTestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00000000"
         self.ExpectedHashOfDefaultData = "158009D3"
@@ -507,8 +803,28 @@ class RotatingTestCase(unittest.TestCase):
         ActualString = self.rotating.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateRotating()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateRotating()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
 
-class RSTestCase(unittest.TestCase):
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateRotating()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateRotating()
+
+        self.HashCloneIsUnique(Hash)
+
+        
+class RSTestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00000000"
         self.ExpectedHashOfDefaultData = "9EF98E63"
@@ -537,8 +853,28 @@ class RSTestCase(unittest.TestCase):
         ActualString = self.rs.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateRS()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateRS()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
 
-class SDBMTestCase(unittest.TestCase):
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateRS()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateRS()
+
+        self.HashCloneIsUnique(Hash)
+
+        
+class SDBMTestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00000000"
         self.ExpectedHashOfDefaultData = "3001A5C9"
@@ -567,8 +903,28 @@ class SDBMTestCase(unittest.TestCase):
         ActualString = self.sdbm.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateSDBM()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateSDBM()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
 
-class ShiftAndXorTestCase(unittest.TestCase):
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateSDBM()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateSDBM()
+
+        self.HashCloneIsUnique(Hash)
+
+        
+class ShiftAndXorTestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00000000"
         self.ExpectedHashOfDefaultData = "BD0A7DA4"
@@ -597,8 +953,28 @@ class ShiftAndXorTestCase(unittest.TestCase):
         ActualString = self.shiftandxor.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateShiftAndXor()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateShiftAndXor()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
 
-class SuperFastTestCase(unittest.TestCase):
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateShiftAndXor()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateShiftAndXor()
+
+        self.HashCloneIsUnique(Hash)
+
+        
+class SuperFastTestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "00000000"
         self.ExpectedHashOfDefaultData = "F00EB3C0"
@@ -627,8 +1003,28 @@ class SuperFastTestCase(unittest.TestCase):
         ActualString = self.superfast.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateSuperFast()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateSuperFast()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
 
-class XXHash32TestCase(unittest.TestCase):
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateSuperFast()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateSuperFast()
+
+        self.HashCloneIsUnique(Hash)
+        
+
+class XXHash32TestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "02CC5D05"
         self.ExpectedHashOfDefaultData = "6A1C7A99"
@@ -675,6 +1071,26 @@ class XXHash32TestCase(unittest.TestCase):
         ActualString = Hash.ComputeString(DefaultData).ToString()
         self.assertTrue(self.ExpectedHashOfDefaultDataWithMaxUInt32AsKey == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateXXHash32()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash32.CreateXXHash32()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
+
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash32.CreateXXHash32()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash32.CreateXXHash32()
+
+        self.HashCloneIsUnique(Hash)
+        
 
 if __name__ ==  '__main__':
     unittest.main()

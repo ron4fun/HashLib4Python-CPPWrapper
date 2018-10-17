@@ -1,7 +1,6 @@
 from TestConstants import *
-import unittest
 
-class FNV64TestCase(unittest.TestCase):
+class FNV64TestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "0000000000000000"
         self.ExpectedHashOfDefaultData = "061A6856F5925B83"
@@ -30,8 +29,28 @@ class FNV64TestCase(unittest.TestCase):
         ActualString = self.fnv.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash64.CreateFNV()
         
-class FNV1a64TestCase(unittest.TestCase):
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash64.CreateFNV()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
+
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash64.CreateFNV()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash64.CreateFNV()
+
+        self.HashCloneIsUnique(Hash)
+
+        
+class FNV1a64TestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "CBF29CE484222325"
         self.ExpectedHashOfDefaultData = "5997E22BF92B0598"
@@ -60,8 +79,28 @@ class FNV1a64TestCase(unittest.TestCase):
         ActualString = self.fnv1a.ComputeString(OnetoNine).ToString()
         self.assertTrue(self.ExpectedHashOfOnetoNine == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash64.CreateFNV1a()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash64.CreateFNV1a()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
 
-class Murmur2_64TestCase(unittest.TestCase):
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash64.CreateFNV1a()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash64.CreateFNV1a()
+
+        self.HashCloneIsUnique(Hash)
+
+
+class Murmur2_64TestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "0000000000000000"
         self.ExpectedHashOfDefaultData = "F78F3AF068158F5A"
@@ -99,8 +138,28 @@ class Murmur2_64TestCase(unittest.TestCase):
         ActualString = Hash.ComputeString(DefaultData).ToString()
         self.assertTrue(self.ExpectedHashOfDefaultDataWithMaxUInt32AsKey == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash64.CreateMurmur2()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash64.CreateMurmur2()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
 
-class SipHash2_4TestCase(unittest.TestCase):
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash64.CreateMurmur2()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash64.CreateMurmur2()
+
+        self.HashCloneIsUnique(Hash)
+
+        
+class SipHash2_4TestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "726FDB47DD0E0E31"
         self.ExpectedHashOfDefaultData = "AA43C4288619D24E"
@@ -142,8 +201,28 @@ class SipHash2_4TestCase(unittest.TestCase):
         ActualString = Hash.ComputeString(DefaultData).ToString()
         self.assertTrue(self.ExpectedHashOfDefaultData == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash64.CreateSipHash2_4()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash64.CreateSipHash2_4()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
 
-class XXHash64TestCase(unittest.TestCase):
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash64.CreateSipHash2_4()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash64.CreateSipHash2_4()
+
+        self.HashCloneIsUnique(Hash)
+
+
+class XXHash64TestCase(BaseTestCase):
     def setUp(self):
         self.ExpectedHashOfEmptyData = "EF46DB3751D8E999"
         self.ExpectedHashOfDefaultData = "0F1FADEDD0B77861"
@@ -190,6 +269,26 @@ class XXHash64TestCase(unittest.TestCase):
         ActualString = Hash.ComputeString(EmptyData).ToString()
         self.assertTrue(self.ExpectedHashOfEmptyDataWithOneAsKey == ActualString)
 
+    def test_TestChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash64.CreateXXHash64()
+        
+        self.ChunkedDataIncrementalHash(Hash)
+        
+    def test_TestIndexChunkedDataIncrementalHash(self):
+        Hash = HashLib4Python.PyHash64.CreateXXHash64()
+        
+        self.IndexChunkedDataIncrementalHash(Hash)
+
+    def test_TestHashCloneIsCorrect(self):
+        Hash = HashLib4Python.PyHash64.CreateXXHash64()
+
+        self.HashCloneIsCorrectTestHelper(Hash)
+
+    def test_TestHashCloneIsUnique(self):
+        Hash = HashLib4Python.PyHash64.CreateXXHash64()
+
+        self.HashCloneIsUnique(Hash)
+        
 
 if __name__ ==  '__main__':
     unittest.main()
