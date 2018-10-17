@@ -38,6 +38,8 @@ It also supports **Incremental Hashing**, **Cloning** and **NullDigest**.
 	> PyICRC
 	> PyIHMAC
 	> PyIPBKDF2_HMAC
+	> PyIBlake2SConfig
+	> PyIBlake2BConfig
 	
 	# All the hashes will return a PyIHash except:
 	> All CRC Variants from CRC3 to CRC64 created from PyCRC or PyChecksum.CreateCRC 
@@ -85,6 +87,12 @@ It also supports **Incremental Hashing**, **Cloning** and **NullDigest**.
 	>>> result_clone = hmac.TransformFinal()
 	>>> result.CompareTo(result_clone)
 	True
+	>>>
+	>>> config = HashLib4Python.PyIBlake2SConfig()
+	>>> config.SetKey(bytearray("password"))
+	>>> blake = HashLib4Python.PyCrypto.CreateBlake2S(config)
+	>>> blake.ComputeString("").ToString()
+	'94A045C666013340E470E8EC0B2D58A9EF7E7556B6CD7DA6A3F5DFADBE877A21'
 	>>>
 	
 
