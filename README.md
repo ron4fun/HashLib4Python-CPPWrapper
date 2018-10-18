@@ -27,7 +27,8 @@ It also supports **Incremental Hashing**, **Cloning** and **NullDigest**.
 
 
 #####Installing the Library:
-	Copy "HashLib4Python.pyd" to your python library package path. It has been very well
+	Copy the 32-bit or 64-bit version of "HashLib4Python.pyd" depending on your Python
+	hardware dependency to your python library package path. It has been very well
 	tested with Python 2.7, but should also work well with Python3.
 
 #####HashLib4Python Quick Guide:
